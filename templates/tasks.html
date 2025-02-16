@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Welcome {{ user.name }}</h1>
+    <h2>Your Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task[2] }} 
+                {% if user.email in ["admin@example.com"] %}
+                    <a href="/delete/{{ task[0] }}">[Delete]</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="/add">
+        <input type="text" name="task" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <br>
+    <a href="/logout">Logout</a>
+</body>
+</html>
+
